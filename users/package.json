@@ -1,9 +1,10 @@
 {
   "name": "users",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "First project in the course",
+  "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "check-format": "prettier --list-different '**/*.{js,jsx,ts,tsx,html,vue,css,less,scss,graphql,yaml,yml,json,md,mdx}'",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,html,vue,css,less,scss,graphql,yaml,yml,json,md,mdx}'"
@@ -16,7 +17,8 @@
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.6.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "nodemon": "^2.0.2"
   },
   "devDependencies": {
     "@eliasnorrby/prettier-config": "^3.0.3",
