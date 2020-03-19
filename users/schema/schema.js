@@ -4,6 +4,7 @@ const {
   GraphQLString,
   GraphQLInt,
   GraphQLSchema,
+  GraphQLList,
 } = require('graphql')
 
 const serverUrl = 'http://localhost:3000'
@@ -14,6 +15,14 @@ const CompanyType = new GraphQLObjectType({
     id: { type: GraphQLString },
     name: { type: GraphQLString },
     description: { type: GraphQLString },
+    users: {
+      type: new GraphQLList(UserType),
+      resolve(parentValue, _args) {
+        return axios
+          .get(`${serverUrl}/companies/${parentValue.id}/users`)
+          .then(res => res.data)
+      },
+    },
   },
 })
 
@@ -41,9 +50,7 @@ const RootQuery = new GraphQLObjectType({
       type: UserType,
       args: { id: { type: GraphQLString } },
       resolve(_parentValue, args) {
-        return axios
-          .get(`${serverUrl}/users/${args.id}`)
-          .then(res => res.data)
+        return axios.get(`${serverUrl}/users/${args.id}`).then(res => res.data)
       },
     },
     company: {
@@ -53,8 +60,8 @@ const RootQuery = new GraphQLObjectType({
         return axios
           .get(`${serverUrl}/companies/${args.id}`)
           .then(res => res.data)
-      }
-    }
+      },
+    },
   },
 })
 
