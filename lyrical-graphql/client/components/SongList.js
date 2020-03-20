@@ -4,11 +4,18 @@ import { Link } from 'react-router'
 import query from '../queries/fetchSongs'
 import gql from 'graphql-tag'
 
-const SongList = ({ data }) => {
+const SongList = ({ data, mutate }) => {
+  const onSongDelete = id => {
+    mutate({ variables: { id } })
+  }
+
   const renderSongs = () =>
     data.songs.map(({ id, title }) => (
       <li key={id} className="collection-item">
         {title}
+        <i className="material-icons" onClick={() => onSongDelete(id)}>
+          delete
+        </i>
       </li>
     ))
 
