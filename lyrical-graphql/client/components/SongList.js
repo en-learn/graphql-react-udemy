@@ -1,7 +1,9 @@
 import React from 'react'
 import gql from 'graphql-tag'
+import { graphql } from 'react-apollo'
 
-export const SongList = () => {
+const SongList = (props) => {
+  console.log(props)
   return <div>SongList</div>
 }
 
@@ -12,3 +14,5 @@ const query = gql`
     }
   }
 `
+
+export default graphql(query)(SongList)
