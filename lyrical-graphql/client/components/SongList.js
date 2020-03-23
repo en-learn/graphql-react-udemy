@@ -6,7 +6,7 @@ import gql from 'graphql-tag'
 
 const SongList = ({ data, mutate }) => {
   const onSongDelete = id => {
-    mutate({ variables: { id } })
+    mutate({ variables: { id } }).then(() => data.refetch())
   }
 
   const renderSongs = () =>
