@@ -4,6 +4,7 @@ import fetchSong from '../queries/fetchSong'
 import { Link } from 'react-router'
 
 import LyricCreate from './LyricCreate'
+import LyricList from './LyricList'
 
 const SongDetail = ({ data, params }) => {
   const { song } = data
@@ -16,7 +17,8 @@ const SongDetail = ({ data, params }) => {
     <div>
       <Link to="/">Back</Link>
       <h3>{song.title}</h3>
-    <LyricCreate songId={params.id} />
+      <LyricList />
+      <LyricCreate songId={params.id} />
     </div>
   )
 }
