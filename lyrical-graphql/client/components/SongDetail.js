@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 
 import LyricCreate from './LyricCreate'
 
-const SongDetail = ({ data }) => {
+const SongDetail = ({ data, params }) => {
   const { song } = data
 
   if (!song) {
@@ -16,7 +16,7 @@ const SongDetail = ({ data }) => {
     <div>
       <Link to="/">Back</Link>
       <h3>{song.title}</h3>
-      <LyricCreate />
+    <LyricCreate songId={params.id} />
     </div>
   )
 }
