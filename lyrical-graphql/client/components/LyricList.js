@@ -11,10 +11,12 @@ class LyricList extends Component {
     return this.props.lyrics.map(({ id, content, likes }) => (
       <li key={id} className="collection-item">
         {content}
-        <i onClick={() => this.onLike(id)} className="material-icons">
-          thumb_up
-        </i>
-        {likes}
+        <div className="vote-box">
+          <i onClick={() => this.onLike(id)} className="material-icons">
+            thumb_up
+          </i>
+          {likes}
+        </div>
       </li>
     ))
   }
