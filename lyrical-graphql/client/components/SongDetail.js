@@ -17,7 +17,7 @@ const SongDetail = ({ data, params }) => {
     <div>
       <Link to="/">Back</Link>
       <h3>{song.title}</h3>
-      <LyricList />
+      <LyricList lyrics={song.lyrics} />
       <LyricCreate songId={params.id} />
     </div>
   )
